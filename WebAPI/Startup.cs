@@ -1,3 +1,4 @@
+using IOC;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -11,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebAPI.Configure;
 
 namespace WebAPI
 {
@@ -28,6 +30,8 @@ namespace WebAPI
         {
 
             services.AddControllers();
+            services.AddDatabaseConfig(Configuration);
+            services.AddDependencyInjectionConfig();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebAPI", Version = "v1" });
