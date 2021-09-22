@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Service": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "Chave": "Valor"
+      }
+    }
+  }
+}
