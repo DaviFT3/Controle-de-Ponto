@@ -17,11 +17,12 @@ namespace Data.Context
         }
 
         public DbSet<Collaborator> Collaborators { get; set; }
-
+        public DbSet<Company> Companies { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Collaborator>(new CollaboratorMap().Configure);
+            modelBuilder.Entity<Company>(new CompanyMap().Configure);
 
 
         }

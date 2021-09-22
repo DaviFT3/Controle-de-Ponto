@@ -67,16 +67,18 @@ namespace Data.Mapping
 
             
             builder.Property(prop => prop.Assignment)
-           .HasConversion(prop => prop, prop => prop)
+           .HasConversion(prop => prop.ToString(), prop => prop)
            .IsRequired()
            .HasColumnName("Assignment")
            .HasColumnType("varchar(100)");
 
             builder.Property(prop => prop.HiringType)
-           .HasConversion(prop => prop, prop => prop)
+           .HasConversion(prop => prop.ToString(), prop => prop)
            .IsRequired()
            .HasColumnName("Hiring Type")
            .HasColumnType("varchar(100)");
+
+            
         }
     }
 }
