@@ -1,6 +1,7 @@
 ﻿using Data.Context;
 using Domain.Entities;
 using Domain.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +10,11 @@ using System.Threading.Tasks;
 
 namespace Data.Repository
 {
-    public class CompanyRepository : BaseRepository<Company>, ICompanyRepository
+    public class CompanyRepository : BaseRepository<Schedule>, ICompanyRepository
     {
         public CompanyRepository(SqlContext context) : base(context)
         {
         }
-    
+
     }
 }

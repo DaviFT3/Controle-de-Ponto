@@ -1,6 +1,4 @@
-﻿using AutoMapper;
-using Domain.Interfaces;
-using Service.Interfaces;
+﻿using Domain.Entities;
 using Service.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -8,9 +6,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Service.Services
+namespace Service.Interfaces
 {
-    public class CompanyService : ICompanyService
+    public interface IScheduleService
     {
+        IEnumerable<ScheduleViewModel> GetAll();
     }
 }

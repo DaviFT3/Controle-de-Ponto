@@ -1,7 +1,6 @@
 ﻿using Domain.Entities;
 using Domain.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using Service.Interfaces;
 using Service.Validators;
 using System;
@@ -13,28 +12,28 @@ namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CompanyController : ControllerBase
+    public class ScheduleController : ControllerBase
     {
-        private IBaseService<Company> _baseCompanyService;
-        private ICompanyService _companyservice;
-        
+        private IBaseService<Schedule> _baseScheduleService;
+        private IScheduleService _Scheduleservice;
 
-        public CompanyController(IBaseService<Company> baseCompanyService
-            , ICompanyService CompanyAplicattionService)
+
+        public ScheduleController(IBaseService<Schedule> baseScheduleService
+            , IScheduleService ScheduleAplicattionService)
         {
-            _baseCompanyService = baseCompanyService;
-            _companyservice = CompanyAplicattionService;
+            _baseScheduleService = baseScheduleService;
+            _Scheduleservice = ScheduleAplicattionService;
         }
 
 
 
         [HttpPut]
-        public IActionResult Update([FromBody] Company company)
+        public IActionResult Update([FromBody] Schedule schedule)
         {
-            if (company == null)
+            if (schedule == null)
                 return NotFound();
 
-            return Execute(() => _baseCompanyService.Update<CompanyValidator>(company));
+            return Execute(() => _baseScheduleService.Update<ScheduleValidator>(schedule));
         }
 
         [HttpDelete("{id}")]
@@ -45,7 +44,7 @@ namespace WebAPI.Controllers
 
             Execute(() =>
             {
-                _baseCompanyService.Delete(id);
+                _baseScheduleService.Delete(id);
                 return true;
             });
 
@@ -53,18 +52,18 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] Company company)
+        public IActionResult Create([FromBody] Schedule schedule)
         {
-            if (company == null)
+            if (schedule == null)
                 return NotFound();
 
-            return Execute(() => _baseCompanyService.Add<CompanyValidator>(company).Id);
+            return Execute(() => _baseScheduleService.Add<ScheduleValidator>(schedule).Id);
         }
 
         [HttpGet]
         public IActionResult Get()
         {
-            return Execute(() => _baseCompanyService.Get());
+            return Execute(() => _Scheduleservice.GetAll());
         }
 
         [HttpGet("{id}")]
@@ -73,7 +72,7 @@ namespace WebAPI.Controllers
             if (id == 0)
                 return NotFound();
 
-            return Execute(() => _baseCompanyService.GetById(id));
+            return Execute(() => _baseScheduleService.GetById(id));
         }
 
         private IActionResult Execute(Func<object> func)

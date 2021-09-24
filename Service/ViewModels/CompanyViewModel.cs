@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Service.ViewModels
 {
-    class CompanyViewModel
+    public class CompanyViewModel
     {
         public string Name { get; set; }
 
