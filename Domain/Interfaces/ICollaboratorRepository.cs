@@ -10,5 +10,7 @@ namespace Domain.Interfaces
     public interface ICollaboratorRepository
     {
         Collaborator GetAllAuthentication(string emailAut, string PasswordAut);
+
+        IEnumerable<Collaborator> GetAll();
     }
 }

@@ -60,6 +60,7 @@ namespace WebAPI.Controllers
 
             return Execute(() => _baseCompanyService.Add<CompanyValidator>(company).Id);
         }
+       
 
         [HttpGet]
         public IActionResult Get()

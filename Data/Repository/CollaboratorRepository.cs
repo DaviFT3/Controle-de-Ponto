@@ -1,6 +1,7 @@
 ﻿using Data.Context;
 using Domain.Entities;
 using Domain.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +20,13 @@ namespace Data.Repository
             var obj = CurrentSet
                        .Where(x => x.Email == emailAut && x.Password == passwordAut)
                        .First();
+            return obj;
+        }
+        public IEnumerable<Collaborator> GetAll()
+        {
+            var obj = CurrentSet
+                       .Include(x => x.Company).ToList();
+
             return obj;
         }
     }

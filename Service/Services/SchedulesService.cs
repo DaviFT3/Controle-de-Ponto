@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Domain.Entities;
 using Domain.Interfaces;
 using Service.Interfaces;
 using Service.ViewModels;
@@ -26,6 +27,12 @@ namespace Service.Services
             var objviewmodel = _mapper.Map<IEnumerable<ScheduleViewModel>>(obj);
             return objviewmodel;
 
+        }
+        public IEnumerable<ScheduleViewModel> GetAllByCollaboratorId(int id)
+        {
+            var obj = _scheduleRepository.GetAllScheduleByCollaboratorId(id);
+            var objviewmodel = _mapper.Map<IEnumerable<ScheduleViewModel>>(obj);
+            return objviewmodel;
         }
     }
 }

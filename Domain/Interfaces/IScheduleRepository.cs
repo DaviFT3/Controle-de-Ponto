@@ -10,5 +10,7 @@ namespace Domain.Interfaces
     public interface IScheduleRepository
     {
         IEnumerable<Schedule> GetAll();
+
+        IEnumerable<Schedule> GetAllScheduleByCollaboratorId(int id);
     }
 }

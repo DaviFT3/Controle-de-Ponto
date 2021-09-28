@@ -75,6 +75,69 @@ namespace WebAPI.Controllers
             return Execute(() => _baseScheduleService.GetById(id));
         }
 
+        [HttpPost]
+        [Route("Automate Entry Time")]
+        public IActionResult AutomateEntry(int id)
+        {
+            var autoSchedule = new Schedule();
+
+            autoSchedule.CollaboratorId = id;
+            autoSchedule.EntryTime = DateTime.Now;
+
+            return Execute(() => _baseScheduleService.Add<ScheduleValidator>(autoSchedule).Id);
+
+        }
+
+        [HttpPost]
+        [Route("Automate Lunch Time")]
+        public IActionResult AutomateLunchTime(int id)
+        {
+            var autoSchedule = new Schedule();
+
+            autoSchedule.CollaboratorId = id;
+            autoSchedule.LunchTime = DateTime.Now;
+
+            return Execute(() => _baseScheduleService.Add<ScheduleValidator>(autoSchedule).Id);
+
+        }
+
+        [HttpPost]
+        [Route("Automate Return Lunch Time")]
+        public IActionResult AutomateReturn(int id)
+        {
+            var autoSchedule = new Schedule();
+
+            autoSchedule.CollaboratorId = id;
+            autoSchedule.LunchReturnTime = DateTime.Now;
+
+            return Execute(() => _baseScheduleService.Add<ScheduleValidator>(autoSchedule).Id);
+
+        }
+
+        [HttpPost]
+        [Route("Automate Departure")]
+        public IActionResult AutomateDeparture(int id)
+        {
+            var autoSchedule = new Schedule();
+
+            autoSchedule.CollaboratorId = id;
+            autoSchedule.DepartureTime = DateTime.Now;
+
+            return Execute(() => _baseScheduleService.Add<ScheduleValidator>(autoSchedule).Id);
+
+        }
+
+        [HttpGet]
+        [Route("Collaborator Schedules")]
+        public IActionResult GetSchedulesByCollaboratorId(int id)
+        {
+            if (id == 0)
+                return NotFound();
+
+            return Execute(() => _Scheduleservice.GetAllByCollaboratorId(id));
+        }
+
+
         private IActionResult Execute(Func<object> func)
         {
             try

@@ -22,5 +22,13 @@ namespace Data.Repository
 
             return obj;
         }
+        public IEnumerable<Schedule> GetAllScheduleByCollaboratorId(int id)
+        {
+            var obj = CurrentSet.AsNoTracking()
+                .Include(x => x.Collaborator)
+                .Where(x => x.Collaborator.Id == id).ToList();
+
+            return obj;
+        }
     }
 }

@@ -99,7 +99,7 @@ namespace WebAPI.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            return Execute(() => _baseCollaboratorService.Get());
+            return Execute(() => _collaboratorservice.GetAll());
         }
 
         [HttpGet("{id}")]

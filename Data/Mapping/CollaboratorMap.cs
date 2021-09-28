@@ -32,13 +32,13 @@ namespace Data.Mapping
             builder.Property(prop => prop.Password)
             .HasConversion(prop => prop.ToString(), prop => prop)
             .IsRequired()
-            .HasColumnName("CPF")
+            .HasColumnName("Senha")
             .HasColumnType("varchar(100)");
 
             builder.Property(prop => prop.CPF)
             .HasConversion(prop => prop.ToString(), prop => prop)
             .IsRequired()
-            .HasColumnName("Name")
+            .HasColumnName("CPF")
             .HasColumnType("varchar(14)");
 
             builder.Property(prop => prop.Phone)

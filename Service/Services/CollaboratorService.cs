@@ -24,6 +24,13 @@ namespace Service.Services
             _mapper = mapper;
 
         }
+        public IEnumerable<CollaboratorViewModel> GetAll()
+        {
+            var obj = _CollaboratorRepository.GetAll();
+            var objviewmodel = _mapper.Map<IEnumerable<CollaboratorViewModel>>(obj);
+            return objviewmodel;
+
+        }
         public CollaboratorViewModel GetAllAuthentication(string email, string password)
         {
 

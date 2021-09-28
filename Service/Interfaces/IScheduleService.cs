@@ -11,5 +11,7 @@ namespace Service.Interfaces
     public interface IScheduleService
     {
         IEnumerable<ScheduleViewModel> GetAll();
+
+        IEnumerable<ScheduleViewModel> GetAllByCollaboratorId(int id);
     }
 }
