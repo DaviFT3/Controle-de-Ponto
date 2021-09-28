@@ -14,5 +14,6 @@ namespace Service.AutoMapper
         public SchedulesProfile()
             => CreateMap<Schedule, ScheduleViewModel>().ReverseMap()
             .ForMember(dto => dto.Collaborator, opt => opt.MapFrom(x => x.Collaborator));
+            
     }
 }

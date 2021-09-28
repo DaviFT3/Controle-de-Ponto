@@ -137,6 +137,10 @@ namespace Data.Migrations
                         .HasColumnType("varchar(100)")
                         .HasColumnName("Lunch Time");
 
+                    b.Property<string>("WorkedHours")
+                        .HasColumnType("varchar(100)")
+                        .HasColumnName("Worked Hours");
+
                     b.HasKey("Id");
 
                     b.HasIndex("CollaboratorId");

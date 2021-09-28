@@ -10,7 +10,7 @@ using System;
 namespace Data.Migrations
 {
     [DbContext(typeof(SqlContext))]
-    [Migration("20210927192206_myfirstDB")]
+    [Migration("20210928180939_myfirstDB")]
     partial class myfirstDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -138,6 +138,10 @@ namespace Data.Migrations
                     b.Property<DateTime>("LunchTime")
                         .HasColumnType("varchar(100)")
                         .HasColumnName("Lunch Time");
+
+                    b.Property<string>("WorkedHours")
+                        .HasColumnType("varchar(100)")
+                        .HasColumnName("Worked Hours");
 
                     b.HasKey("Id");
 

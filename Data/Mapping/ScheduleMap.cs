@@ -41,6 +41,12 @@ namespace Data.Mapping
             .HasColumnName("Departure Time")
             .HasColumnType("varchar(100)");
 
+            builder.Property(prop => prop.WorkedHours)
+            .HasConversion(prop => prop.ToString(), prop => prop)
+
+            .HasColumnName("Worked Hours")
+            .HasColumnType("varchar(100)");
+
 
 
         }

@@ -22,7 +22,9 @@ namespace Service.Validators
 
 
             RuleFor(c => c.DepartureTime);
-                   
+
+            RuleFor(c => c.WorkedHours);
+
 
         }
     }

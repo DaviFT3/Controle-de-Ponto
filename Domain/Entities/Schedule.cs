@@ -16,6 +16,8 @@ namespace Domain.Entities
 
         public DateTime DepartureTime { get; set; }
 
+        public string  WorkedHours { get; set; }
+
         public int CollaboratorId { get; set; }
         
         public Collaborator Collaborator { get; set; }

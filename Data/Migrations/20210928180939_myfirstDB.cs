@@ -61,6 +61,7 @@ namespace Data.Migrations
                     LunchTime = table.Column<DateTime>(name: "Lunch Time", type: "varchar(100)", nullable: false),
                     LunchReturnTime = table.Column<DateTime>(name: "Lunch Return Time", type: "varchar(100)", nullable: false),
                     DepartureTime = table.Column<DateTime>(name: "Departure Time", type: "varchar(100)", nullable: false),
+                    WorkedHours = table.Column<string>(name: "Worked Hours", type: "varchar(100)", nullable: true),
                     CollaboratorId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
