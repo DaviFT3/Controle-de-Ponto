@@ -30,5 +30,26 @@ namespace Data.Repository
 
             return obj;
         }
+        public Schedule CheckSchedules(int id)
+        {
+            var obj = CurrentSet.AsNoTracking()
+                .Include(x => x.Collaborator)
+                .Where(x => x.CollaboratorId == id && (x.EntryTime.Date <= DateTime.Today))
+                .FirstOrDefault();
+
+            return obj;
+        }
+
+        public double TotalHoursWorked(int id)
+        {
+            var total = new Schedule();
+            total.CollaboratorId = id;
+            TimeSpan result;
+
+            result = (total.DepartureTime - total.EntryTime) - (total.LunchReturnTime - total.LunchTime);
+            return result.Hours;
+
+        }
+
     }
 }

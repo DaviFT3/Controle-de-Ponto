@@ -10,7 +10,7 @@ using System;
 namespace Data.Migrations
 {
     [DbContext(typeof(SqlContext))]
-    [Migration("20210928180939_myfirstDB")]
+    [Migration("20210929172503_myfirstDB")]
     partial class myfirstDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

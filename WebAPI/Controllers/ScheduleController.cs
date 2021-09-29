@@ -136,6 +136,15 @@ namespace WebAPI.Controllers
 
             return Execute(() => _Scheduleservice.GetAllByCollaboratorId(id));
         }
+        [HttpPost]
+        [Route("Check Schedules")]
+        public IActionResult BeatTime(int id)
+        {
+            if (id == 0)
+                return NotFound();
+
+            return Execute(() => _Scheduleservice.BeatTime(id));
+        }
 
 
         private IActionResult Execute(Func<object> func)

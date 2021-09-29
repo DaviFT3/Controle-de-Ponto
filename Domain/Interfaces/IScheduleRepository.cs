@@ -12,5 +12,9 @@ namespace Domain.Interfaces
         IEnumerable<Schedule> GetAll();
 
         IEnumerable<Schedule> GetAllScheduleByCollaboratorId(int id);
+
+        Schedule CheckSchedules(int id);
+
+        double TotalHoursWorked(int id);
     }
 }

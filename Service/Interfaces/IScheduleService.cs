@@ -13,5 +13,7 @@ namespace Service.Interfaces
         IEnumerable<ScheduleViewModel> GetAll();
 
         IEnumerable<ScheduleViewModel> GetAllByCollaboratorId(int id);
+
+        ScheduleViewModel BeatTime(int idUser);
     }
 }
