@@ -31,9 +31,9 @@ namespace WebAPI.Controllers
 
         [HttpPost]
         [Route("login")]
-        public async Task<ActionResult<dynamic>> Authenticate(string email, string password)
+        public async Task<ActionResult<dynamic>> Authenticate(Login login)
         {
-            var authenticate = _collaboratorservice.GetAllAuthentication(email, password);
+            var authenticate = _collaboratorservice.GetAllAuthentication(login.email, login.password);
 
             // Verifica se o usuário existe
             if (authenticate == null)

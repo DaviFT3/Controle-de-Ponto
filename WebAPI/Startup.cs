@@ -28,8 +28,16 @@ namespace APIControleDePonto
 
         public void ConfigureServices(IServiceCollection services)
         {
+
             services.AddAutoMapperConfig();
             services.AddDatabaseConfig(Configuration);
+            services.AddCors(o => o.AddPolicy("CorsPolicy", builder => {
+                builder
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .AllowCredentials()
+                .WithOrigins("http://localhost:4200");
+            }));
             services.AddDependencyInjectionConfig();
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -49,6 +57,8 @@ namespace APIControleDePonto
             }
 
             app.UseHttpsRedirection();
+
+            app.UseCors("CorsPolicy");
 
             app.UseRouting();
 
