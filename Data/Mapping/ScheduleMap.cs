@@ -42,7 +42,7 @@ namespace Data.Mapping
             .HasColumnType("varchar(100)");
 
             builder.Property(prop => prop.WorkedHours)
-            .HasConversion(prop => prop.ToString(), prop => prop)
+            .HasConversion(prop => prop, prop => prop)
 
             .HasColumnName("Worked Hours")
             .HasColumnType("varchar(100)");

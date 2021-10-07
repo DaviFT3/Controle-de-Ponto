@@ -36,6 +36,16 @@ namespace Service.Services
             var objviewmodel = _mapper.Map<IEnumerable<ScheduleViewModel>>(obj);
             return objviewmodel;
         }
+        public IEnumerable<ScheduleViewModel> GetLastRegisters(int idUser)
+        {
+            var pastdate = DateTime.Now.AddDays(-7);
+            var todaydate = DateTime.Now;
+            var obj = _scheduleRepository.GetAllScheduleByCollaboratorId(idUser);
+            var dashboarddates = obj.Where(Schedule => Schedule.EntryTime.Date <= todaydate && Schedule.EntryTime.Date > pastdate).ToList();
+            var objviewmodel = _mapper.Map<IEnumerable<ScheduleViewModel>>(dashboarddates);
+            return objviewmodel;
+        }
+       
         public ScheduleViewModel BeatTime(int idUser)
         {
             var objcheck = _scheduleRepository.CheckSchedules(idUser);
@@ -64,10 +74,28 @@ namespace Service.Services
             else
             {
                 objcheck.DepartureTime = DateTime.Now;
-                objcheck.WorkedHours = TotalHoursWorked(objcheck).ToString();
+                objcheck.WorkedHours = TotalHoursWorked(objcheck);
                 _baseRepository.Update(objcheck);
                 return _mapper.Map<ScheduleViewModel>(objcheck);
             }
+        }
+        public double HoursBalance(int idUser)
+        {
+            var obj = _scheduleRepository.GetAllScheduleByCollaboratorId(idUser);
+            var workedhours = obj.Where(Schedule => Schedule.WorkedHours != null).ToList();
+            double balance = 0;
+            foreach (var hours in workedhours)
+            {
+                if (hours.WorkedHours > 8)
+                {
+                    balance = balance + (hours.WorkedHours - 8);
+                }
+                else if (hours.WorkedHours < 8)
+                {
+                    balance = balance - (8 - hours.WorkedHours);
+                }
+            }
+            return balance;
         }
         public double TotalHoursWorked(Schedule obj)
         {

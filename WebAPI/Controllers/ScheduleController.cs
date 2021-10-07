@@ -156,6 +156,23 @@ namespace WebAPI.Controllers
             return Execute(() => _Scheduleservice.BeatTime(id));
         }
 
+        [HttpGet]
+        [Route("DashboardDates")]
+        public IActionResult DashboardDates(int id)
+        {
+            if (id == 0)
+                return NotFound();
+
+            return Execute(() => _Scheduleservice.GetLastRegisters(id));
+        }
+        [HttpGet]
+        [Route("HoursBalance")]
+        public IActionResult Balance(int id)
+        {
+            if (id == 0)
+                return NotFound();
+            return Execute(() => _Scheduleservice.HoursBalance(id));
+        }
 
         private IActionResult Execute(Func<object> func)
         {
