@@ -77,5 +77,24 @@ namespace Service.Services
             return result.Hours;
 
         }
+        public ScheduleViewModel GetSchedulesByUserByToday(int idUser)
+        {
+            var objcheck = _scheduleRepository.CheckSchedules(idUser);
+            if (objcheck == null)
+            {
+
+                var objViewModel = new ScheduleViewModel() { CollaboratorId = idUser, EntryTime = DateTime.Now };
+                var obj = _mapper.Map<Schedule>(objViewModel);
+                _baseRepository.Insert(obj);
+
+                return objViewModel;
+
+            }
+            else
+            {
+                return _mapper.Map<ScheduleViewModel>(objcheck);
+            }
+
+        }
     }
 }

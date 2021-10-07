@@ -15,5 +15,7 @@ namespace Service.Interfaces
         IEnumerable<ScheduleViewModel> GetAllByCollaboratorId(int id);
 
         ScheduleViewModel BeatTime(int idUser);
+
+        ScheduleViewModel GetSchedulesByUserByToday(int idUser);
     }
 }

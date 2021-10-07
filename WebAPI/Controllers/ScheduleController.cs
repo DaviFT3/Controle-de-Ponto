@@ -126,9 +126,19 @@ namespace WebAPI.Controllers
             return Execute(() => _baseScheduleService.Add<ScheduleValidator>(autoSchedule).Id);
 
         }
-
         [HttpGet]
-        [Route("Collaborator Schedules")]
+        [Route("CollaboratorSchedulesByToday/{id}")]
+
+        public IActionResult CollaboratorSchedulesByUserByToday(int id)
+        {
+            if (id == 0)
+                return NotFound();
+
+            return Execute(() => _Scheduleservice.GetSchedulesByUserByToday(id));
+
+        }
+        [HttpGet]
+        [Route("CollaboratorSchedules")]
         public IActionResult GetSchedulesByCollaboratorId(int id)
         {
             if (id == 0)
@@ -136,9 +146,9 @@ namespace WebAPI.Controllers
 
             return Execute(() => _Scheduleservice.GetAllByCollaboratorId(id));
         }
-        [HttpPost]
-        [Route("Check Schedules")]
-        public IActionResult BeatTime(int id)
+        [HttpGet]
+        [Route("CheckSchedules")]
+        public IActionResult BeatTime( int id)
         {
             if (id == 0)
                 return NotFound();
