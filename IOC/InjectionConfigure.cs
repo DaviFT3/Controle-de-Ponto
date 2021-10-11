@@ -23,6 +23,8 @@ namespace IOC
             services.AddScoped(typeof(ICompanyService), typeof(CompanyService));
             services.AddScoped(typeof(IScheduleService), typeof(ScheduleService));
             services.AddScoped(typeof(IScheduleRepository), typeof(ScheduleRepository));
+            services.AddScoped(typeof(IDashboardService), typeof(DashboardService));
+            services.AddScoped(typeof(IDashboardRepository), typeof(DashboardRepository));
         }
     }
  }

@@ -1,13 +1,12 @@
-﻿using Domain.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Service.ViewModels
+namespace Domain.Entities
 {
-    public class DashboardViewModel
+    public class Dashboard : BaseEntity
     {
         public int CollaboratorId { get; set; }
 
@@ -17,9 +16,6 @@ namespace Service.ViewModels
 
         public double Workload { get; set; }
 
-        public IEnumerable<ScheduleViewModel> RecentDates { get; set; }
-
-       
 
     }
 }
