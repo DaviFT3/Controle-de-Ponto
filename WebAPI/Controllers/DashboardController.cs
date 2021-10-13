@@ -30,7 +30,7 @@ namespace WebAPI.Controllers
        public IActionResult UpdateDashboard(int idUser)
        {
             if (idUser == 0)
-            return NotFound();
+                return NotFound();
             return Execute(() => _dashboardService.UpdateDashboard(idUser));
         }
 

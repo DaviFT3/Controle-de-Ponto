@@ -16,11 +16,16 @@ namespace Service.Services
         private readonly IScheduleRepository _scheduleRepository;
         private readonly IMapper _mapper;
         private readonly IBaseRepository<Schedule> _baseRepository;
-        public ScheduleService(IScheduleRepository scheduleRepository, IMapper mapper, IBaseRepository<Schedule> baseRepository)
+        private readonly IDashboardRepository _dashboardRepository;
+        private readonly IBaseRepository<Dashboard> _baseDashboardRepository;
+        public ScheduleService(IScheduleRepository scheduleRepository, IMapper mapper, IBaseRepository<Schedule> baseRepository, IDashboardRepository dashboardRepository,
+             IBaseRepository<Dashboard> baseDashboardRepository)
         {
             _scheduleRepository = scheduleRepository;
             _mapper = mapper;
             _baseRepository = baseRepository;
+            _dashboardRepository = dashboardRepository;
+            _baseDashboardRepository = baseDashboardRepository;
         }
 
         public IEnumerable<ScheduleViewModel> GetAll()
@@ -74,8 +79,21 @@ namespace Service.Services
             else
             {
                 objcheck.DepartureTime = DateTime.Now;
-                objcheck.WorkedHours = TotalHoursWorked(objcheck);
+                var hoursworked = TotalHoursWorked(objcheck);
+                objcheck.WorkedHours = hoursworked;
                 _baseRepository.Update(objcheck);
+                if (hoursworked > 8)
+                {
+                    var objdashboard = _dashboardRepository.GetCollaborator(idUser);
+                    objdashboard.Balance = objdashboard.Balance +(hoursworked - objdashboard.Workload);
+                    _baseDashboardRepository.Update(objdashboard);
+                }
+                else if (hoursworked < 8)
+                {
+                    var objdashboard = _dashboardRepository.GetCollaborator(idUser);
+                    objdashboard.Balance = objdashboard.Balance - (objdashboard.Workload - hoursworked);
+                    _baseDashboardRepository.Update(objdashboard);
+                }
                 return _mapper.Map<ScheduleViewModel>(objcheck);
             }
         }
