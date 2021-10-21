@@ -1,5 +1,6 @@
 ﻿using Domain.Entities;
 using Domain.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Service.Interfaces;
 using Service.Validators;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace WebAPI.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ScheduleController : ControllerBase
@@ -136,6 +138,17 @@ namespace WebAPI.Controllers
 
             return Execute(() => _Scheduleservice.GetSchedulesByUserByToday(id));
 
+        }
+
+        [HttpGet]
+        [Route("CollaboratorSchedulesByMonthAndYear")]
+        public IActionResult GetSchedulesByCollaboratorId([FromQuery] int id, [FromQuery] int year, [FromQuery] int month)
+        {
+            if (id == 0)
+                return NotFound();
+            month = month + 1;
+
+            return Execute(() => _Scheduleservice.GetAllByCollaboratorIdAndYearAndMonth(id, year, month));
         }
         [HttpGet]
         [Route("CollaboratorSchedules")]

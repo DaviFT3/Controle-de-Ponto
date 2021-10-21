@@ -22,6 +22,23 @@ namespace Data.Repository
                        .First();
             return obj;
         }
+
+        public Collaborator GetById(int id)
+        {
+            var obj = CurrentSet
+                      .Include(x => x.Company).Where(x => x.Id == id).FirstOrDefault();
+
+            return obj;
+        }
+        public IEnumerable<Collaborator> GetByCompanyId(int idCompany)
+        {
+            var obj = CurrentSet
+                          .Include(x => x.Company)
+                          .Where(x => x.CompanyId == idCompany).ToList();
+
+            return obj;
+        }
+
         public IEnumerable<Collaborator> GetAll()
         {
             var obj = CurrentSet

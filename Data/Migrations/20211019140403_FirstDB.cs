@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Data.Migrations
 {
-    public partial class myfirstDB : Migration
+    public partial class FirstDB : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -52,6 +52,55 @@ namespace Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Dashboard",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CollaboratorId = table.Column<int>(type: "int", nullable: false),
+                    HoursBalance = table.Column<double>(name: "Hours Balance", type: "varchar(100)", nullable: false),
+                    Workload = table.Column<double>(type: "varchar(100)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Dashboard", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Dashboard_User_CollaboratorId",
+                        column: x => x.CollaboratorId,
+                        principalTable: "User",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "DayOffs",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CompanyId = table.Column<int>(type: "int", nullable: false),
+                    CollaboratorId = table.Column<int>(type: "int", nullable: false),
+                    DayOffDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Active = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DayOffs", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_DayOffs_Company_CompanyId",
+                        column: x => x.CompanyId,
+                        principalTable: "Company",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.NoAction);
+                    table.ForeignKey(
+                        name: "FK_DayOffs_User_CollaboratorId",
+                        column: x => x.CollaboratorId,
+                        principalTable: "User",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.NoAction);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Schedule",
                 columns: table => new
                 {
@@ -61,7 +110,7 @@ namespace Data.Migrations
                     LunchTime = table.Column<DateTime>(name: "Lunch Time", type: "varchar(100)", nullable: false),
                     LunchReturnTime = table.Column<DateTime>(name: "Lunch Return Time", type: "varchar(100)", nullable: false),
                     DepartureTime = table.Column<DateTime>(name: "Departure Time", type: "varchar(100)", nullable: false),
-                    WorkedHours = table.Column<string>(name: "Worked Hours", type: "varchar(100)", nullable: true),
+                    WorkedHours = table.Column<double>(name: "Worked Hours", type: "varchar(100)", nullable: false),
                     CollaboratorId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -76,6 +125,21 @@ namespace Data.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_Dashboard_CollaboratorId",
+                table: "Dashboard",
+                column: "CollaboratorId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_DayOffs_CollaboratorId",
+                table: "DayOffs",
+                column: "CollaboratorId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_DayOffs_CompanyId",
+                table: "DayOffs",
+                column: "CompanyId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Schedule_CollaboratorId",
                 table: "Schedule",
                 column: "CollaboratorId");
@@ -88,6 +152,12 @@ namespace Data.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Dashboard");
+
+            migrationBuilder.DropTable(
+                name: "DayOffs");
+
             migrationBuilder.DropTable(
                 name: "Schedule");
 

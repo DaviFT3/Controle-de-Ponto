@@ -25,6 +25,8 @@ namespace IOC
             services.AddScoped(typeof(IScheduleRepository), typeof(ScheduleRepository));
             services.AddScoped(typeof(IDashboardService), typeof(DashboardService));
             services.AddScoped(typeof(IDashboardRepository), typeof(DashboardRepository));
+            services.AddScoped(typeof(IDayOffRepository), typeof(DayOffRepository));
+            services.AddScoped(typeof(IDayOffService), typeof(HappyFridayService));
         }
     }
  }

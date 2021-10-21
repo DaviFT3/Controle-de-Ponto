@@ -30,6 +30,14 @@ namespace Data.Repository
 
             return obj;
         }
+        public IEnumerable<Schedule> GetAllScheduleByCollaboratorIdByMonthAndYear(int id, int year, int month)
+        {
+            var obj = CurrentSet.AsNoTracking()
+                .Include(x => x.Collaborator)
+                .Where(x => x.Collaborator.Id == id && (x.EntryTime.Month == month && x.EntryTime.Year == year)).ToList();
+
+            return obj;
+        }
         public Schedule CheckSchedules(int id)
         {
             var obj = CurrentSet.AsNoTracking()

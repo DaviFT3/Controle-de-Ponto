@@ -12,7 +12,8 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace WebAPI.Controllers
-{
+{   
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class CollaboratorController : ControllerBase
@@ -29,6 +30,7 @@ namespace WebAPI.Controllers
             _logger = logger;
         }
 
+        [AllowAnonymous]
         [HttpPost]
         [Route("login")]
         public async Task<ActionResult<dynamic>> Authenticate(Login login)
@@ -108,7 +110,7 @@ namespace WebAPI.Controllers
             if (id == 0)
                 return NotFound();
 
-            return Execute(() => _baseCollaboratorService.GetById(id));
+            return Execute(() => _collaboratorservice.GetById(id));
         }
 
         private IActionResult Execute(Func<object> func)

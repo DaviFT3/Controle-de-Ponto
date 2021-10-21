@@ -20,6 +20,8 @@ namespace Service.Interfaces
 
         IEnumerable<ScheduleViewModel> GetLastRegisters(int idUser);
 
+        IEnumerable<ScheduleViewModel> GetAllByCollaboratorIdAndYearAndMonth(int id, int year, int month);
+
         double HoursBalance(int idUser);
     }
 }

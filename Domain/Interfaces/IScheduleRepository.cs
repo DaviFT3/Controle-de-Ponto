@@ -16,5 +16,7 @@ namespace Domain.Interfaces
         Schedule CheckSchedules(int id);
 
         double TotalHoursWorked(int id);
+
+        IEnumerable<Schedule> GetAllScheduleByCollaboratorIdByMonthAndYear(int id, int year, int month);
     }
 }

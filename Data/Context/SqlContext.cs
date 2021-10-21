@@ -20,6 +20,8 @@ namespace Data.Context
         public DbSet<Company> Companies { get; set; }
         public DbSet<Schedule> Schedules { get; set; }
         public DbSet<Dashboard> Dashboards { get; set; }
+
+        public DbSet<DayOff> DayOffs { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -27,6 +29,8 @@ namespace Data.Context
             modelBuilder.Entity<Company>(new CompanyMap().Configure);
             modelBuilder.Entity<Schedule>(new ScheduleMap().Configure);
             modelBuilder.Entity<Dashboard>(new DashboardMap().Configure);
+            modelBuilder.Entity<DayOff>(new DayOffMap().Configure);
+
 
 
         }

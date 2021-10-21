@@ -31,6 +31,14 @@ namespace Service.Services
             return objviewmodel;
 
         }
+        public CollaboratorViewModel GetById(int id)
+        {
+
+            var obj = _CollaboratorRepository.GetById(id);
+            var objviewmodel = _mapper.Map<CollaboratorViewModel>(obj);
+
+            return objviewmodel;
+        }
         public CollaboratorViewModel GetAllAuthentication(string email, string password)
         {
 

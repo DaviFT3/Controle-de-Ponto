@@ -11,5 +11,7 @@ namespace Service.Interfaces
     {
         IEnumerable<CollaboratorViewModel> GetAll();
         CollaboratorViewModel GetAllAuthentication(string email, string password);
+
+        CollaboratorViewModel GetById(int id);
     }
 }
