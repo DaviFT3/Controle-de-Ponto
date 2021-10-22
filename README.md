@@ -14,7 +14,7 @@
 </ul>
 <h2>Projeto</h2>
 <h3>A aplicação utiliza a arquitetura DDD para facilitar a implementação, também foi usado  JWT para a autenticação da api.
-O projeto consiste em uma gerência de pontos a partir de um usuário, permitindo a criação de pontos e folgas.
+O projeto consiste em uma gerência de pontos a partir de um usuário, permitindo a criação de pontos e marcar folgas.
 </h3>
 <h2> Features </h2>
 
