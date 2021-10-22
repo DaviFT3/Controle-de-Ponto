@@ -5,4 +5,5 @@
 <h3>Projeto desenvolvido usando as seguintes tecnologias:</h3>
 <ul>
   <li>C#</li>
+  <li>Entity Framework</li>
 </ul>
