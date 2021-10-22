@@ -6,4 +6,9 @@
 <ul>
   <li>C#</li>
   <li>Entity Framework</li>
+  <li>Sql Server</li>
+  <li>Fluent Validator</li>
+  <li>Mapper</li>
+  <li>JWT</li>
+  <li>Swagger</li>
 </ul>
