@@ -37,7 +37,7 @@ namespace WebAPI.Controllers
         {
             var authenticate = _collaboratorservice.GetAllAuthentication(login.email, login.password);
 
-            // Verifica se o usuário existe
+            
             if (authenticate == null)
             {
                 _logger.LogError("Usuario não encontrado.");
@@ -45,13 +45,13 @@ namespace WebAPI.Controllers
             }
             _logger.LogInformation("Usuario logado.");
 
-            // Gera o Token
+           
             var token = TokenService.GenerateToken(authenticate);
 
-            // Oculta a senha
+            
             authenticate.Password = "";
 
-            // Retorna os dados
+            
             return new
             {
                 user = authenticate,
