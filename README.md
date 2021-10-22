@@ -8,7 +8,9 @@
   <li>Entity Framework</li>
   <li>Sql Server</li>
   <li>Fluent Validator</li>
-  <li>Mapper</li>
+  <li>AutoMapper</li>
   <li>JWT</li>
   <li>Swagger</li>
 </ul>
+<h2>Projeto</h2>
+<h3></h3>
