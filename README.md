@@ -16,3 +16,9 @@
 <h3>A aplicação utiliza a arquitetura DDD para facilitar a implementação, também foi usado  JWT para a autenticação da api.
 O projeto consiste em uma gerência de pontos a partir de um usuário, permitindo a criação de pontos e folgas.
 </h3>
+### Features
+
+- [x] Cadastro de usuário(Colaborador)
+- [x] Cadastro de empresa
+- [x] Registro de Ponto
+- [x] Registro de Folga 
