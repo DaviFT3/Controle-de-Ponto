@@ -25,7 +25,7 @@ namespace Data.Repository
             return obj;
         }
 
-        //TrocarNome e tirar o toList e o First
+        
 
         public DayOff GetDayOffByYearAndMonthAndUserId(int idUser, int year, int month)
         {

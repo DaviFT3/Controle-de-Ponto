@@ -136,9 +136,6 @@ namespace Service.Services
             {
 
                 var objViewModel = new ScheduleViewModel() { CollaboratorId = idUser, EntryTime = DateTime.Parse("0001-01-01T00:00:00") };
-               // var obj = _mapper.Map<Schedule>(objViewModel);
-                //_baseRepository.Insert(obj);
-
                 return objViewModel;
 
             }
