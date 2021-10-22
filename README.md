@@ -24,7 +24,7 @@ O projeto consiste em uma gerência de pontos a partir de um usuário, permitind
 - [x] Registro de Folga 
 
 <h1>Importante</h1>
-<h3>Necessário rodas os comandos na camada Data:</h3>
+<h3>Necessário rodar os comandos na camada Data:</h3>
 <ul>
    <li>add-migration RPDatabase</li>
   <li>Update-Database</li>
